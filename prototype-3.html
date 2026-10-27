@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pista — Jogo de palavras</title>
+  <link rel="stylesheet" href="prototypes.css">
+  <link rel="stylesheet" href="game.css">
+  <script src="prototypes.js" defer></script>
+</head>
+<body class="concept utility game-app">
+<a class="back" href="index.html">← protótipos</a>
+<div class="app-shell">
+  <header><div class="brand"><i aria-hidden="true"></i> PISTA</div><button id="settings-button" aria-haspopup="dialog">Configurações</button></header>
+  <aside aria-label="Opções da partida">
+    <p>NÍVEL</p><div class="difficulty-options"><button data-difficulty="medium" class="active">MÉDIO</button><button data-difficulty="hard">DIFÍCIL</button><button data-difficulty="easy">FÁCIL</button></div><hr>
+    <p>MODO</p><div class="mode-options"><button data-mode="daily" class="active">DIÁRIO</button><button data-mode="unlimited">ILIMITADO</button></div>
+  </aside>
+  <main>
+    <div class="round-head"><div><small id="puzzle-label">DESAFIO 301</small><h1 id="attempt-title">Nova partida</h1></div><button id="ranking-button" class="ranking-summary" aria-label="Abrir ranking"><small>RANKING</small><strong>↑ 128</strong></button></div>
+    <div class="analysis-grid">
+      <section class="letter-panel" aria-labelledby="words-heading">
+        <div class="panel-heading"><h2 id="words-heading">PALAVRAS</h2><span id="attempt-count">0 / 6</span></div>
+        <div id="attempt-list" class="attempt-list" aria-live="polite"></div>
+        <form id="guess-form" class="guess-form" autocomplete="off">
+          <label for="guess-input" class="sr-only">Digite uma palavra de cinco letras</label>
+          <input id="guess-input" name="guess" maxlength="5" inputmode="text" placeholder="DIGITE UMA PALAVRA" aria-describedby="guess-help">
+          <button id="send" type="submit">Enviar palavra</button>
+        </form>
+        <p id="guess-help" class="input-help">Use 5 letras. ✓ correta; ↔ outra posição; − ausente.</p>
+        <div id="virtual-keyboard" class="virtual-keyboard" aria-label="Teclado virtual"></div>
+      </section>
+      <section class="clues-panel" aria-labelledby="semantic-heading">
+        <h2 id="semantic-heading">SEMÂNTICA</h2><div class="big-score"><span id="semantic-score">—</span><small>/100</small></div>
+        <div id="semantic-bars" class="signal" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <p id="semantic-rank"><b>Envie</b> sua primeira palavra</p>
+        <div class="legend" aria-label="Legenda de feedback"><span><i></i> Correta</span><span><i></i> Outra posição</span><span><i></i> Ausente</span></div>
+      </section>
+    </div>
+  </main>
+</div>
+<dialog id="result-dialog" aria-labelledby="result-title"><button class="dialog-close" aria-label="Fechar resultado">×</button><p class="dialog-kicker">RESULTADO</p><h2 id="result-title">Parabéns!</h2><div id="result-summary"></div><div class="dialog-actions"><button id="share-button">Compartilhar resultado</button><button id="new-game-button">Jogar novamente</button></div></dialog>
+<dialog id="settings-dialog" aria-labelledby="settings-title"><button class="dialog-close" aria-label="Fechar configurações">×</button><p class="dialog-kicker">PREFERÊNCIAS</p><h2 id="settings-title">Configurações</h2><label class="setting-row">Tema escuro <input id="theme-toggle" type="checkbox" role="switch"></label><label class="setting-row">Alto contraste <input id="contrast-toggle" type="checkbox" role="switch"></label><button id="reset-button" class="danger-button">Apagar progresso local</button></dialog>
+<div class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
